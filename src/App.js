@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [position, setPosition] = useState(0); // 0, 1, or 2
+
+  const texts = [
+    "The study of how computers understand and generate human language, called Natural Language Processing (NLP), has changed a lot recently. A big part of this change came from new designs of computer programs called \"Transformer-based Language Models\" (or LMs for short). Think of these LMs as computer brains specially made to understand text. Just a few years ago, these computer brains were smaller and could run on graphics cards (GPUs) which are like turbo-boosters for regular computers. But today, the most advanced ones are so big and complex, they need special buildings full of super-powerful computers. Because these big computer brains are so useful (and expensive), companies have started selling access to them online instead of letting other people download and use them directly. This setup is often referred to as Language-Models-as-a-Service (or LMaaS). It means the big computer brains are hosted in one place and people pay to access their power, sort of like a subscription. These services have become really popular. They can do many things, like searching for information or solving problems across different topics, all by understanding and generating text. But as they've gotten more powerful and widespread, people have started to worry about them being misused or having biases. There's now a big effort to make sure these LMs are safe and reflect good values.",
+    "The field of natural language processing (NLP) has undergone a profound transformation in the past few years, with the advent of (Transformer-based) Language Models (LMs) (Vaswani et al., 2017; Devlin et al., 2019; Radford et al., 2019). Improved access to large models has been a fundamental facilitator of progress (Wolf et al., 2019), fueled by the scale of data and computing available to research institutions and companies (Kaplan et al., 2020). In less than five years, the state-of-the-art models evolved from small architectures that were trainable on few GPUs (Peters et al., 2018; Devlin et al., 2019) to very large and complex architectures that require dedicated data centres and supercomputers (Raffel et al., 2020; Rae et al., 2021), which are very costly to set up. Therefore, commercial pressure has led to the development of large, high-performance LMs, accessible exclusively as a service for customers, that return strings or tokens in response to a user’s textual input – but for which information on architecture, implementation, training procedure, or training data is not available, nor is the ability to inspect or modify its internal states offered. This paradigm, known as Language-Models-as-a-Service (LMaaS) (Sun et al., 2022), represents a licensing model in which LMs are centrally hosted and, typically, provided on a subscription basis. Due to the performance large LMs recently attained, modern LMaaS provide a unified portal for various services that had previously been separated, from access to information that was the realm of search engines to problem-solving tools on a large number of domains (Romera-Paredes and Torr, 2015; Brown et al., 2020; OpenAI, 2023). These services have grown rapidly and are now adopted extensively by hundreds of millions of customers. In parallel to improving models’ capabilities, the risk of malicious usage is also increasing, e.g., regarding the weaponization of biotechnologies and mass surveillance (Hendrycks et al., 2023). Other recent works highlight of the risks of LMaaS and LMs that are not aligned with human values (Bommasani et al., 2021). This has resulted in an explosion of interest in understanding values and biases encoded by these models, intending to align the former to those of humans and",
+    "The study of how computers understand and generate human language, called Natural Language Processing (NLP), has changed a lot recently. A big part of this change came from new designs of computer programs called \"Transformer-based Language Models\" (or LMs for short). Think of these LMs as computer brains specially made to understand text. Just a few years ago, these computer brains were smaller and could run on graphics cards (GPUs) which are like turbo-boosters for regular computers. But today, the most advanced ones are so big and complex, they need special buildings full of super-powerful computers. Because these big computer brains are so useful (and expensive), companies have started selling access to them online instead of letting other people download and use them directly. This setup is often referred to as Language-Models-as-a-Service (or LMaaS). It means the big computer brains are hosted in one place and people pay to access their power, sort of like a subscription. These services have become really popular. They can do many things, like searching for information or solving problems across different topics, all by understanding and generating text. But as they've gotten more powerful and widespread, people have started to worry about them being misused or having biases. There's now a big effort to make sure these LMs are safe and reflect good values.",
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="slider">
+        <div onClick={() => setPosition(0)} className={`spot ${position === 0 && 'active'}`} />
+        <div onClick={() => setPosition(1)} className={`spot ${position === 1 && 'active'}`} />
+        <div onClick={() => setPosition(2)} className={`spot ${position === 2 && 'active'}`} />
+      </div>
+      <div className="text-container">
+        <div className="text-wall">{texts[position]}</div>
+      </div>
     </div>
   );
 }
